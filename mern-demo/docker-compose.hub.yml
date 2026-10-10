@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    image: lephathuy435/mern-backend:1.0
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb+srv://hhuuuyy236725_db_user:Huy123456789@cluster0.xrg9dog.mongodb.net/mern-db?retryWrites=true&w=majority
+    restart: always
+
+  frontend:
+    image: lephathuy435/mern-frontend:1.0
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - backend

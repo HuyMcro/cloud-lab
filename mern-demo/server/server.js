@@ -11,10 +11,17 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Kết nối MongoDB Atlas
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Kết nối MongoDB Atlas thành công!'))
   .catch((err) => console.error('❌ Lỗi kết nối MongoDB Atlas:', err));
 
+// Route Health Check cho Render / Cloud PaaS
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'UP', timestamp: new Date() });
+});
+
+// API Hello Test
 app.get('/api/hello', (req, res) => {
   res.json({ message: "Backend Express đang hoạt động thành công!" });
 });
@@ -37,10 +44,6 @@ app.post('/api/students', async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: "Lỗi khi thêm sinh viên", error: error.message });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Server đang chạy trên port ${PORT}`);
 });
 
 // Câu 38: API PUT /api/students/:id - Cập nhật thông tin sinh viên
@@ -73,4 +76,9 @@ app.delete('/api/students/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Lỗi khi xóa sinh viên", error: error.message });
   }
+});
+
+// Khởi chạy server (đặt dưới cùng)
+app.listen(PORT, () => {
+  console.log(`🚀 Server đang chạy trên port ${PORT}`);
 });
