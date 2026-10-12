@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-// Gán trực tiếp URL Backend của bạn làm giá trị mặc định
-const API_URL = import.meta.env.VITE_API_URL || 'https://mern-backend-236725.onrender.com';
+// Dùng đường dẫn tương đối để gọi API qua Reverse Proxy / Vite Proxy
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -93,6 +93,11 @@ function App() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
+      <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '5px' }}>Quản Lý Sinh Viên</h1>
+      <p style={{ textAlign: 'center', color: '#4CAF50', fontWeight: 'bold', marginTop: '0', marginBottom: '25px' }}>
+        Phiên bản 2.0 - Production Cloud PaaS (Auto-Deployed)
+      </p>
+
       <h2>{editingId ? 'Cập Nhật Thông Tin Sinh Viên' : 'Thêm Sinh Viên Mới'}</h2>
       <form onSubmit={handleSubmit} style={{ marginBottom: '30px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <input
