@@ -1,7 +1,10 @@
-import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react' // Sửa dấu chấm . thành dấu xuyệt /
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  preview: {
+    allowedHosts: true,
+    host: true
+  }
 })

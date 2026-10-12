@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-// Tự động lấy URL API từ biến môi trường (Render/Vite) hoặc dùng đường dẫn tương đối
-const API_URL = import.meta.env.VITE_API_URL || '';
+// Gán trực tiếp URL Backend của bạn làm giá trị mặc định
+const API_URL = import.meta.env.VITE_API_URL || 'https://mern-backend-236725.onrender.com';
 
 function App() {
   const [students, setStudents] = useState([]);
